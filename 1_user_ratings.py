@@ -27,7 +27,7 @@ df_user_links = pd.concat([df_user_links, pd.DataFrame(new_rows)], ignore_index=
 # Sonuçları göster
 print(df_user_links)
 
-game_play_median = pd.read_csv('filtered_steam.csv')
+game_play_median = pd.read_csv('csv_files/filtered_steam.csv')
 
 columns = [
     'appid', 
@@ -40,13 +40,13 @@ columns = [
 ]
 
 try:
-    user_ratings = pd.read_csv('user_ratings.csv')
+    user_ratings = pd.read_csv('csv_files/user_ratings.csv')
 except FileNotFoundError:
     # Dosya bulunamazsa boş bir DataFrame oluştur
     user_ratings = pd.DataFrame(columns=columns)
 
     # Dosyayı oluştur
-    user_ratings.to_csv('user_ratings.csv', index=False)
+    user_ratings.to_csv('csv_files/user_ratings.csv', index=False)
 
 def get_df(aa):
     ss = aa.json()
@@ -101,5 +101,5 @@ for i in range(8):
     df_col_text_element = RDD_csv(df_col_,i)
     df_col_text_ = pd.concat([df_col_text_, df_col_text_element], ignore_index=True)
 
-df_col_text_.to_csv('user_ratings.csv', mode='a', header=False, index=False)
+df_col_text_.to_csv('csv_files/user_ratings.csv', mode='a', header=False, index=False)
 

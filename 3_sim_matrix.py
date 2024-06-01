@@ -3,7 +3,7 @@ import numpy as np
 from scipy.spatial.distance import cosine
 from pandas import DataFrame
 
-df_filter_user_ratings_ = pd.read_csv('cos_sim_prep.csv')
+df_filter_user_ratings_ = pd.read_csv('csv_files/cos_sim_prep.csv')
 df_filter_user_ratings_ = df_filter_user_ratings_.drop(['Unnamed: 0'], axis=1)
 print(df_filter_user_ratings_.head(5))
 
@@ -16,7 +16,7 @@ for i in range(8):
 df = a0.pivot(index='appid', columns='user_id', values='ratings')
 print(df.head(5))
 df.fillna(0.0, inplace = True)
-df.to_csv('df_fill_NA.csv')
+df.to_csv('csv_files/df_fill_NA.csv')
 
 similarity_matrix = pd.DataFrame(index=range(8), columns=range(8))
 
@@ -25,5 +25,5 @@ for i in range(8):
         similarity_matrix.iloc[i, j] = 1 - cosine(df.iloc[:, i], df.iloc[:, j])
         
 print(similarity_matrix)
-similarity_matrix.to_csv('sim_matrix.csv', index=True)
+similarity_matrix.to_csv('csv_files/sim_matrix.csv', index=True)
         

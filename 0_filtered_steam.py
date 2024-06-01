@@ -1,7 +1,7 @@
 import pandas as pd
 
 # CSV dosyasını oku
-df = pd.read_csv('steam.csv')
+df = pd.read_csv('csv_files/steam.csv')
 
 # Sadece ilgili sütunları seç
 df_filtered = df[['appid', 'name', 'median_playtime']]
@@ -17,4 +17,4 @@ filtered_steam_data = {
 }
 
 # Filtrelenmiş DataFrame'i yeni bir CSV dosyasına kaydet
-df_non_zero.to_csv('filtered_steam.csv', index=False)
+df_non_zero.to_csv('csv_files/filtered_steam.csv', index=False)
